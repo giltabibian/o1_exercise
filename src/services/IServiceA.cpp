@@ -2,8 +2,18 @@
 
 namespace services {
 
-void IServiceA::Init(size_t maxCount) {
-  dataBase.elements.reserve(maxCount);
+void IServiceA::Init(int maxCount) {
+  elements.reserve(maxCount);
 }
+
+string IServiceA::Get(int index) { 
+  if(all.id > elements.at(index).id) 
+    return all.value;
+  else 
+    return elements.at(index).value;
+}
+
+void IServiceA::Set(int index, string val) { }
+void IServiceA::SetAll(string val) { }
 
 }

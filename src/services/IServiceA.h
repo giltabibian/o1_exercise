@@ -2,27 +2,28 @@
 
 #include <string>
 #include <vector>
-// #include <unordered_map>
+
+using std::string, std::vector;
+
 
 namespace services {
 
   struct Element {
-    size_t id;
-    std::string value;
-  };
-
-  struct DataBase {
-    size_t      id;
-    Element     all;
-    std::vector<Element> elements;
+    int id;
+    string value;
   };
   
 class IServiceA {
 private:
-  DataBase dataBase;
+    int             id;
+    Element         all;
+    vector<Element> elements;
 
 public:
-  void Init(size_t maxCount);
+  void Init(int maxCount);
+  string Get(int index);
+  void Set(int index, string val);
+  void SetAll(string val);
 
   IServiceA(size_t maxCount){
     Init(maxCount);
