@@ -13,7 +13,10 @@ string IServiceA::Get(int index) {
     return elements.at(index).value;
 }
 
-void IServiceA::Set(int index, string val) { }
+void IServiceA::Set(int index, string val) { 
+  elements.at(index) = {id++, val};
+}
+
 void IServiceA::SetAll(string val) { }
 
 }
