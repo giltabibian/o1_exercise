@@ -1,7 +1,7 @@
-#include "src/services/IServiceA.h"
+#include "services/IServiceA.h"
 
-void main(){
-    src::services::IServiceA service;
+int main(){
+    services::IServiceA service(100);
 
-    service
+    return 0;
 }

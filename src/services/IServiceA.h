@@ -4,7 +4,7 @@
 #include <vector>
 #include <unordered_map>
 
-namespace src::services {
+namespace services {
 
   struct Element {
     size_t id;
@@ -22,9 +22,7 @@ private:
   DataBase dataBase;
 
 public:
-  void Init(size_t maxCount) {
-    dataBase.elementsArray.reserve(maxCount);
-  }
+  void Init(size_t maxCount);
 
   IServiceA(size_t maxCount){
     Init(maxCount);
