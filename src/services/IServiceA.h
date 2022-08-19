@@ -10,13 +10,13 @@ using std::vector;
 namespace services {
 
   struct Element {
-    int id;
-    string value;
+    uint64_t  id;
+    string    value;
   };
   
 class IServiceA {
 private:
-    int             id;
+    uint64_t        id;
     Element         all;
     vector<Element> elements;
 
