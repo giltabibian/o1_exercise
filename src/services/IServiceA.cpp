@@ -17,6 +17,8 @@ void IServiceA::Set(int index, string val) {
   elements.at(index) = {id++, val};
 }
 
-void IServiceA::SetAll(string val) { }
+void IServiceA::SetAll(string val) {
+  all = {id++, val};
+}
 
 }
