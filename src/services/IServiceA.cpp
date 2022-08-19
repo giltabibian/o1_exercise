@@ -14,7 +14,7 @@ string IServiceA::Get(int index) {
 }
 
 void IServiceA::Set(int index, string val) { 
-  elements.at(index) = {id++, val};
+  elements.insert(elements.begin() + index, {id++, val});
 }
 
 void IServiceA::SetAll(string val) {
