@@ -19,6 +19,8 @@ private:
     uint64_t        id;
     Element         all;
     vector<Element> elements;
+    vector<Element>::iterator itr;
+
 
 public:
   void Init(int maxCount);
@@ -26,7 +28,7 @@ public:
   void Set(int index, string val);
   void SetAll(string val);
 
-  IServiceA(size_t maxCount){
+  IServiceA(int maxCount){
     Init(maxCount);
   }
 
