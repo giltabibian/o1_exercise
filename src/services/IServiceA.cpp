@@ -25,4 +25,13 @@ void IServiceA::SetAll(string val) {
   all = {++id, val};
 }
 
+uint8_t IServiceA::getId(int index) {
+  return elements.at(index).id;
+}
+
+uint8_t IServiceA::getAllId() {
+  return all.id;
+}
+
+
 }
