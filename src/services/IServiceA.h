@@ -25,12 +25,13 @@ public:
   void Set(int index, string val);
   void SetAll(string val);
 
-  int64_t getTimestamp(int index);
-  int64_t getAllTimestamp();
-
   IServiceA(int maxCount){
     Init(maxCount);
   }
+
+  // debug functions
+  int64_t getTimestamp(int index);
+  int64_t getAllTimestamp();
 
 };
 
