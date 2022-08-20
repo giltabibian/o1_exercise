@@ -11,18 +11,18 @@ void IServiceA::Init(int maxCount) {
 }
 
 string IServiceA::Get(int index) { 
-  if(all.id > elements.at(index-1).id) 
+  if(all.id > elements.at(index).id) 
     return all.value;
   else 
-    return elements.at(index-1).value;
+    return elements.at(index).value;
 }
 
 void IServiceA::Set(int index, string val) { 
-  elements.at(index -1) = {id++, val};
+  elements.at(index) = {++id, val};
 }
 
 void IServiceA::SetAll(string val) {
-  all = {id++, val};
+  all = {++id, val};
 }
 
 }
