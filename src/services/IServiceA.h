@@ -2,21 +2,22 @@
 
 #include <string>
 #include <vector>
+#include <chrono>
 
 using std::string;
 using std::vector;
-
+using namespace std::chrono;
 
 namespace services {
 
   struct Element {
-    uint16_t   id;
+    int64_t   timestamp;
     string    value;
   };
   
 class IServiceA {
 private:
-    uint16_t         id;
+    int64_t         timestamp;
     Element         all;
     vector<Element> elements;
 
@@ -26,8 +27,8 @@ public:
   void Set(int index, string val);
   void SetAll(string val);
 
-  uint16_t getId(int index);
-  uint16_t getAllId();
+  int64_t getTimestamp(int index);
+  int64_t getAllTimestamp();
 
   IServiceA(int maxCount){
     Init(maxCount);

@@ -2,35 +2,35 @@
 
 namespace services {
 
-Element defaultValue = {0, ""};
+Element defaultValue = {duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count(), ""};
 
 void IServiceA::Init(int maxCount) {
   elements.resize(maxCount, defaultValue);
   all = defaultValue;
-  id = 0;
+  timestamp = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
 string IServiceA::Get(int index) { 
-  if(all.id > elements.at(index).id) 
+  if(all.timestamp > elements.at(index).timestamp) 
     return all.value;
   else 
     return elements.at(index).value;
 }
 
 void IServiceA::Set(int index, string val) { 
-  elements.at(index) = {++id, val};
+  elements.at(index) = {++timestamp, val};
 }
 
 void IServiceA::SetAll(string val) {
-  all = {++id, val};
+  all = {++timestamp, val};
 }
 
-uint16_t IServiceA::getId(int index) {
-  return elements.at(index).id;
+int64_t IServiceA::getTimestamp(int index) {
+  return elements.at(index).timestamp;
 }
 
-uint16_t IServiceA::getAllId() {
-  return all.id;
+int64_t IServiceA::getAllTimestamp() {
+  return all.timestamp;
 }
 
 

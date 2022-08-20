@@ -19,7 +19,7 @@ TEST_CASE_O1( "basic", "[functionality]" ) {
     REQUIRE( service.Get(2) == "3" );
 }
 
-TEST_CASE_O1( "id_wraparound", "[functionality]" ) {
+TEST_CASE_O1( "wraparound", "[functionality]" ) {
     const int maxWrapAroundId = pow(2,8); // uint8_t granularity
     services::IServiceA service(2*maxWrapAroundId);
 
@@ -28,9 +28,10 @@ TEST_CASE_O1( "id_wraparound", "[functionality]" ) {
     for(size_t i = 0; i < 2*maxWrapAroundId; i++){
         service.Set(i, "string element");
     }
-
+    // service.getAllTimestamp();
     for(size_t i = 0; i < 2*maxWrapAroundId; i++){
-        cout << i << "\n";
-        REQUIRE( service.getId(i) > service.getAllId() );
+        // cout << i << "\n";
+        // cout << service.getTimestamp(i) << "\n";
+        REQUIRE( service.getTimestamp(i) > service.getAllTimestamp() );
     }
 }
