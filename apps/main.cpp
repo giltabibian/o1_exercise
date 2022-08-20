@@ -4,7 +4,7 @@
 
 using std::cout;
 
-int main(){
+int main() {
     services::IServiceA service(100);
 
     service.Set(1, "1");
