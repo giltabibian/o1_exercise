@@ -2,11 +2,9 @@
 
 #include <string>
 #include <vector>
-#include <chrono>
 
 using std::string;
 using std::vector;
-using namespace std::chrono;
 
 namespace services {
 
