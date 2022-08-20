@@ -10,13 +10,13 @@ using std::vector;
 namespace services {
 
   struct Element {
-    uint8_t   id;
+    uint16_t   id;
     string    value;
   };
   
 class IServiceA {
 private:
-    uint8_t         id;
+    uint16_t         id;
     Element         all;
     vector<Element> elements;
 
@@ -26,8 +26,8 @@ public:
   void Set(int index, string val);
   void SetAll(string val);
 
-  uint8_t getId(int index);
-  uint8_t getAllId();
+  uint16_t getId(int index);
+  uint16_t getAllId();
 
   IServiceA(int maxCount){
     Init(maxCount);
