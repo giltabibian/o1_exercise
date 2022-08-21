@@ -4,7 +4,6 @@
 #include <stdexcept>
 namespace services {
 
-const Element defaultValue = {0, ""};
 const uint64_t maxLimit = std::numeric_limits<uint64_t>::max();
 
 void IServiceA::Init(int maxCount) {
@@ -30,11 +29,11 @@ void IServiceA::SetAll(string val) {
     all = {++id, val};
 }
 
-void IServiceA::setId(uint64_t id) {
+void IServiceA::setId(const uint64_t id) {
     this->id = id;
 }
 
-uint64_t IServiceA::getId(int index) {
+uint64_t IServiceA::getId(const int index) {
     return elements.at(index).id;
 }
 
