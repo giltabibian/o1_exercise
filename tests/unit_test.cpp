@@ -30,11 +30,11 @@ TEST_CASE_O1("wraparound", "[functionality]") {
     for (size_t i = 0; i < 2 * maxWrapAroundId; i++) {
         service.Set(i, "string element");
     }
-    // service.getAllTimestamp();
+    // service.getAllId();
     for (size_t i = 0; i < 2 * maxWrapAroundId; i++) {
         // cout << i << "\n";
-        // cout << service.getTimestamp(i) << "\n";
-        REQUIRE(service.getTimestamp(i) > service.getAllTimestamp());
+        // cout << service.getId(i) << "\n";
+        REQUIRE(service.getId(i) > service.getAllId());
     }
 }
 

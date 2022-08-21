@@ -2,39 +2,37 @@
 #include <chrono>
 
 using namespace std::chrono;
-
 namespace services {
 
-int64_t calcCurrentTime() {
-    return duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
-}
+const Element defaultValue = {0, ""};
 
 void IServiceA::Init(int maxCount) {
-    elements.resize(maxCount, {calcCurrentTime(), ""});
-    all = {calcCurrentTime(), ""};
+    elements.resize(maxCount, defaultValue);
+    all = defaultValue;
+    id = 0;
 }
 
 string IServiceA::Get(int index) {
-    if (all.timestamp > elements.at(index).timestamp)
+    if (all.id > elements.at(index).id)
         return all.value;
     else
         return elements.at(index).value;
 }
 
 void IServiceA::Set(int index, string val) {
-    elements.at(index) = {calcCurrentTime(), val};
+    elements.at(index) = {++id, val};
 }
 
 void IServiceA::SetAll(string val) {
-    all = {calcCurrentTime(), val};
+    all = {++id, val};
 }
 
-int64_t IServiceA::getTimestamp(int index) {
-    return elements.at(index).timestamp;
+int64_t IServiceA::getId(int index) {
+    return elements.at(index).id;
 }
 
-int64_t IServiceA::getAllTimestamp() {
-    return all.timestamp;
+int64_t IServiceA::getAllId() {
+    return all.id;
 }
 
 } // namespace services

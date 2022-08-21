@@ -8,19 +8,14 @@ using std::vector;
 
 namespace services {
 
-/* using timestamp: 
-day in microseconds: 1000000x60x60x24 = 86400000000
-uint64_6 granularity: 18446744073709551616
-days in uint_64: 18446744073709551616 / 86400000000 = 213503982
-years: 213503982 / 365 = 584942
-*/
 struct Element {
-    int64_t timestamp;
+    int64_t id;
     string value;
 };
 
 class IServiceA {
 private:
+    int64_t id;
     Element all;
     vector<Element> elements;
 
@@ -35,8 +30,8 @@ public:
     }
 
     // debug functions
-    int64_t getTimestamp(int index);
-    int64_t getAllTimestamp();
+    int64_t getId(int index);
+    int64_t getAllId();
 };
 
 } // namespace services
