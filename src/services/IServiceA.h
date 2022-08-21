@@ -8,6 +8,12 @@ using std::vector;
 
 namespace services {
 
+/* using timestamp: 
+day in microseconds: 1000000x60x60x24 = 86400000000
+uint64_6 granularity: 18446744073709551616
+days in uint_64: 18446744073709551616 / 86400000000 = 213503982
+years: 213503982 / 365 = 584942
+*/
 struct Element {
     int64_t timestamp;
     string value;
@@ -15,7 +21,6 @@ struct Element {
 
 class IServiceA {
 private:
-    int64_t timestamp;
     Element all;
     vector<Element> elements;
 

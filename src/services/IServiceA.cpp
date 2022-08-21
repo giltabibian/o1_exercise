@@ -12,7 +12,6 @@ int64_t calcCurrentTime() {
 void IServiceA::Init(int maxCount) {
     elements.resize(maxCount, {calcCurrentTime(), ""});
     all = {calcCurrentTime(), ""};
-    timestamp = calcCurrentTime();
 }
 
 string IServiceA::Get(int index) {
