@@ -9,13 +9,13 @@ using std::vector;
 namespace services {
 
 struct Element {
-    int64_t id;
+    uint64_t id;
     string value;
 };
 
 class IServiceA {
 private:
-    int64_t id;
+    uint64_t id;
     Element all;
     vector<Element> elements;
 
@@ -30,8 +30,9 @@ public:
     }
 
     // debug functions
-    int64_t getId(int index);
-    int64_t getAllId();
+    void setId(uint64_t id);
+    uint64_t getId(int index);
+    uint64_t getAllId();
 };
 
 } // namespace services

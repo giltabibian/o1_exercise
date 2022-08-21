@@ -3,6 +3,7 @@
 #include <chrono>
 #include <cmath>
 #include <iostream>
+#include <limits>
 
 #include "src/services/IServiceA.h"
 
@@ -19,23 +20,6 @@ TEST_CASE_O1("basic", "[functionality]") {
 
     REQUIRE(service.Get(1) == "2");
     REQUIRE(service.Get(2) == "3");
-}
-
-TEST_CASE_O1("wraparound", "[functionality]") {
-    const int maxWrapAroundId = pow(2, 8); // uint8_t granularity
-    services::IServiceA service(2 * maxWrapAroundId);
-
-    service.SetAll("string for all");
-
-    for (size_t i = 0; i < 2 * maxWrapAroundId; i++) {
-        service.Set(i, "string element");
-    }
-    // service.getAllId();
-    for (size_t i = 0; i < 2 * maxWrapAroundId; i++) {
-        // cout << i << "\n";
-        // cout << service.getId(i) << "\n";
-        REQUIRE(service.getId(i) > service.getAllId());
-    }
 }
 
 TEST_CASE_O1("timing", "[functionality]") {
@@ -59,4 +43,11 @@ TEST_CASE_O1("timing", "[functionality]") {
     // cout << service2Time << "\n";
 
     REQUIRE(service1Time == service2Time);
+}
+
+TEST_CASE_O1("id_wraparound", "[asserts]") {
+    services::IServiceA service(10);
+
+    service.setId(std::numeric_limits<uint64_t>::max());
+    service.Set(1, "assert");
 }
