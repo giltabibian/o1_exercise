@@ -2,14 +2,17 @@
 #include <chrono>
 
 using namespace std::chrono;
+
 namespace services {
 
-const Element defaultValue = {duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count(), ""};
+int64_t calcCurrentTime() {
+    return duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
+}
 
 void IServiceA::Init(int maxCount) {
-    elements.resize(maxCount, defaultValue);
-    all = defaultValue;
-    timestamp = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    elements.resize(maxCount, {calcCurrentTime(), ""});
+    all = {calcCurrentTime(), ""};
+    timestamp = calcCurrentTime();
 }
 
 string IServiceA::Get(int index) {
@@ -20,11 +23,11 @@ string IServiceA::Get(int index) {
 }
 
 void IServiceA::Set(int index, string val) {
-    elements.at(index) = {++timestamp, val};
+    elements.at(index) = {calcCurrentTime(), val};
 }
 
 void IServiceA::SetAll(string val) {
-    all = {++timestamp, val};
+    all = {calcCurrentTime(), val};
 }
 
 int64_t IServiceA::getTimestamp(int index) {
