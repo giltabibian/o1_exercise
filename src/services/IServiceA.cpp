@@ -21,7 +21,7 @@ string IServiceA::Get(int index) {
 }
 
 void IServiceA::Set(int index, string val) {
-    assert(id < maxLimit);
+    assert(id <= maxLimit);
     elements.at(index) = {++id, val};
 }
 
