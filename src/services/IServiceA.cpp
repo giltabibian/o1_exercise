@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <limits>
 #include <stdexcept>
+
 namespace services {
 
 const uint64_t maxLimit = std::numeric_limits<uint64_t>::max();
